@@ -1,32 +1,19 @@
-// fs is a Node standard library package for reading and writing files
-const fs = require('fs'); 
-// inquire is a promise-based Node package used to create CLI (Command Line Interface) tools for query-based tasks.
+const fs = require('fs');
+const { get } = require('http');
 const inquirer = require('inquirer');
+const { getEnabledCategories } = require('trace_events');
+const Employee = require("./lib/Employee");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
-inquirer
-  .prompt([
-    {
-      type: 'input',
-      name: 'name',
-      message: 'What is your name?',
-    },
-    {
-      type: 'checkbox',
-      message: 'What languages do you know?',
-      name: 'stack',
-      choices: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
-    },
-    {
-      type: 'list',
-      message: 'What is your preferred method of communication?',
-      name: 'contact',
-      choices: ['email', 'phone', 'telekinesis'],
-    },
-  ])
-  .then((data) => {
-    const filename = `${data.name.toLowerCase().split(' ').join('')}.json`;
 
-    fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
-      err ? console.log(err) : console.log('Success!')
-    );
-  });
+async function init() {
+    try{
+        const employee = await new Employee()
+        console.log(Employee);
+        console.log(employee);
+    } catch (error) {
+        console.log(error)
+    }
+}
