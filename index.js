@@ -1,10 +1,13 @@
-const fs = require('fs');
 const inquirer = require('inquirer');
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const fs = require('fs');
+const generatePage = requires('./src/generatePage')
+
 // This creates the array that will contain the employee objects.
 let employeeList = [];
+
 // This function verifies that a manager is creating the profiles.
 function begin() {
   inquirer.prompt([
@@ -49,7 +52,6 @@ function appMenu() {
     .then(function({name, id, email,officeNumber}) {
         const employeeManager = new Manager(name, id, email, officeNumber)
         employeeList.push(employeeManager);
-        console.log(employeeList);
         addEmployee();
     });
 }
@@ -74,6 +76,8 @@ function addEmployee() {
             const detail = "school"
             newMember(next, detail)
         } else {
+            console.log(employeeList);
+            generatePage(employeeList);
             console.log("----")
         }
     });
@@ -106,15 +110,12 @@ function newMember(next, detail){
         if (next === "Engineer"){
             const newEmployee = new Engineer(name, id, email, detail)
             employeeList.push(newEmployee);
-            console.log(employeeList);
             addEmployee();
         } else if (next === "Intern"){
             const newEmployee = new Intern(name, id, email, detail)
             employeeList.push(newEmployee);
-            console.log(employeeList);
             addEmployee();
         }
     });
 }
-
 begin();
