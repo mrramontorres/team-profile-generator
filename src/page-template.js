@@ -75,6 +75,7 @@ const generateTeam = team => {
         .join("")
     );
 ​
+
     return html.join("");
 ​
 }

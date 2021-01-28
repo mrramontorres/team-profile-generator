@@ -117,8 +117,9 @@ function newMember(next, detail){
     });
 }
 
-function generatePage(employeeList){
-    console.log(employeeList);
+function generatePage(employeeList) {
+    const data = employeeList;
+    return console.log("success");
 }
 
 begin();
