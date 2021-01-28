@@ -3,8 +3,6 @@ const inquirer = require('inquirer');
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Employee = require('./lib/Employee');
-const { connected } = require('process');
 
 let employeeList = [];
 
@@ -73,17 +71,15 @@ function addEmployee() {
     .then(function(nextStep) {
         var obj = nextStep
         const next = obj[Object.keys(obj)[0]];
-        if (next === "Engineer" ){
-            console.log(`${next}`)
+        if (next === "Engineer" || next === "Intern" ){
             newMember(next)
-        } else if (next === "Intern"){
-            console.log(`${next}`)
         } else {
             console.log("----")
         }
     });
 
 }
+
 function newMember(next){
     console.log(next)
   inquirer
