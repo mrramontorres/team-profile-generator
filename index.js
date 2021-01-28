@@ -29,24 +29,24 @@ function appMenu() {
   inquirer
     .prompt([
         {
+            message: "What is the manager's name?",
             type: "input",
             name: "name",
-            message: "What is the manager's name?",
         },
         {
+            message: "What is the manager's employee id?",
             type: "input",
             name: "id",
-            message: "What is the manager's employee id?",
         },
         {
+            message: "What is the manager's work email address?",
             type: "input",
             name: "email",
-            message: "What is the manager's work email address?",
         },
         {
+            message: "What is the manager's office number?",
             type: "input",
             name: "officeNumber",
-            message: "What is the manager's office number?",
         }
         /*{
         type: "confirm",
@@ -58,9 +58,21 @@ function appMenu() {
         const employeeManager = new Manager(name, id, email, officeNumber)
         employeeList.push(employeeManager);
         console.log(employeeList);
+        addEmployee();
     });
 
 }
 
-begin();
+function addEmployee() {
+  inquirer
+    .prompt([
+        {
+        message: "What would you like to do next?",
+        type: "list",
+        choice: ["Add an engineer.", "Add an intern.", "Generate team profiles."]
+        }
+    ])
 
+}
+
+begin();
