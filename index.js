@@ -11,9 +11,9 @@ function begin() {
   inquirer
     .prompt([
         {
-        message: "Are you the manager of this team?",
-        type: "confirm",
-        name: "start",
+            message: "Are you the manager of this team?",
+            type: "confirm",
+            name: "start",
         }
     ])
     .then(val => {
@@ -28,36 +28,38 @@ function begin() {
 function appMenu() {
   inquirer
     .prompt([
-    {
-    type: "input",
-    name: "name",
-    message: "What is the manager's name?",
-    },
-    {
-    type: "input",
-    name: "id",
-    message: "What is the manager's employee id?",
-    },
-    {
-    type: "input",
-    name: "email",
-    message: "What is the manager's work email address?",
-    },
-    {
-        type: "input",
-        name: "officeNumber",
-        message: "What is the manager's office number?",
-    }
-    /*{
-    type: "confirm",
-    name: "choice",
-    message: "Would you like to add more employees?"
-    }*/
+        {
+            type: "input",
+            name: "name",
+            message: "What is the manager's name?",
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the manager's employee id?",
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the manager's work email address?",
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "What is the manager's office number?",
+        }
+        /*{
+        type: "confirm",
+        name: "choice",
+        message: "Would you like to add more employees?"
+        }*/
     ])
     .then(function({name, id, email,officeNumber}) {
         const employeeManager = new Manager(name, id, email, officeNumber)
         employeeList.push(employeeManager);
+        console.log(employeeList);
     });
+
 }
 
 begin();
