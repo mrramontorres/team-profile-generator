@@ -11,50 +11,52 @@ function begin() {
   inquirer
     .prompt([
         {
-            message: "Are you the manager of this team?",
-            type: "confirm",
-            name: "start",
+        message: "Are you the manager of this team?",
+        type: "confirm",
+        name: "start",
         }
     ])
     .then(val => {
         if(val.start) {
             appMenu()
         } else {
-            console.log("\n Only managers are able to create team profiles.\n Please find the manager of this team.\n Goodbye. \n ----------- \n");
+            console.log("\n Only managers can create team profiles.\n Please find the manager of this team.\n Goodbye. \n ----------- \n");
         }
     });
 }
 
 function appMenu() {
-    inquirer.prompt([
+  inquirer
+    .prompt([
     {
     type: "input",
     name: "name",
-    message: "What's your name?",
+    message: "What is the manager's name?",
     },
     {
     type: "input",
     name: "id",
-    message: "What's your employee id?",
+    message: "What is the manager's employee id?",
     },
     {
     type: "input",
     name: "email",
-    message: "What's your email?",
+    message: "What is the manager's work email address?",
     },
+    {
+        type: "input",
+        name: "officeNumber",
+        message: "What is the manager's office number?",
+    }
     /*{
     type: "confirm",
     name: "choice",
     message: "Would you like to add more employees?"
     }*/
     ])
-    .then((data) => {
-        console.log(data.name);
-        console.log(data.id);
-        console.log(data.email);
-        console.log(data);
-        employeeList.push(data);
-        console.log(employeeList);
+    .then(function({name, id, email,officeNumber}) {
+        const employeeManager = new Manager(name, id, email, officeNumber)
+        employeeList.push(employeeManager);
     });
 }
 
