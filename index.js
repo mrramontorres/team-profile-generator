@@ -23,8 +23,18 @@ function appMenu() {
         name: "email",
         message: "What's your email?",
     },
+    {
+        type: "confirm",
+        name: "choice",
+        message: "Would you like to add more employees?"
+      }
     ])
-    .then((data) => {
+    .then((val) => {
+        if (val.choice) {
+            this.appMenu();
+        } else {
+            console.log("Done.")
+        }
         console.log(data)
     });
 }
