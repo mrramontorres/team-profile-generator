@@ -4,11 +4,13 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Employee = require('./lib/Employee');
+const { connected } = require('process');
 
+let employeeList = [];
 
 function appMenu() {
 
-    const employee = inquirer.prompt([
+    inquirer.prompt([
     {
     type: "input",
     name: "name",
@@ -35,6 +37,9 @@ function appMenu() {
         console.log(data.name);
         console.log(data.id);
         console.log(data.email);
+        console.log(data);
+        employeeList.push(data);
+        console.log(employeeList);
 
     });
 
@@ -47,7 +52,6 @@ function appMenu() {
         }
     })
     */
-
 }
 
 appMenu();
