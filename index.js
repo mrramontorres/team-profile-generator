@@ -71,8 +71,12 @@ function addEmployee() {
     .then(function(nextStep) {
         var obj = nextStep
         const next = obj[Object.keys(obj)[0]];
-        if (next === "Engineer" || next === "Intern" ){
-            newMember(next)
+        if (next === "Engineer"){
+            const detail = "gitHub account"
+            newMember(next, detail)
+        } else if (next === "Intern"){
+            const detail = "school"
+            newMember(next, detail)
         } else {
             console.log("----")
         }
@@ -80,8 +84,8 @@ function addEmployee() {
 
 }
 
-function newMember(next){
-    console.log(next)
+function newMember(next, detail){
+    console.log(detail)
   inquirer
     .prompt([
         {
@@ -99,7 +103,19 @@ function newMember(next){
             type: "input",
             name: "email",
         },
+        {
+            message: `What is the ${next}'s ${detail}?`,
+            type: "input",
+            name: "detail",
+        },
     ])
-}
+    .then(function({name, id, email, detail}) {
+        if 
+        const newEmployee = new `${next}`(name, id, email, detail)
+        employeeList.push(newEmployee);
+        console.log(employeeList);
+        addEmployee();
+    });
+}   
 
 begin();
