@@ -3,13 +3,11 @@ const inquirer = require('inquirer');
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-
+// This creates the array that will contain the employee objects.
 let employeeList = [];
-
 // This function verifies that a manager is creating the profiles.
 function begin() {
-  inquirer
-    .prompt([
+  inquirer.prompt([
         {
             message: "Are you the manager of this team?",
             type: "confirm",
@@ -26,8 +24,7 @@ function begin() {
 }
 // This function fufills the manager questions and creates a manager object.
 function appMenu() {
-  inquirer
-    .prompt([
+  inquirer.prompt([
         {
             message: "What is the manager's name?",
             type: "input",
@@ -55,12 +52,11 @@ function appMenu() {
         console.log(employeeList);
         addEmployee();
     });
-
 }
+
 // This function asks what the user wants to do next.
 function addEmployee() {
-  inquirer
-    .prompt([
+  inquirer.prompt([
         {
         message: "Would you like to add anyone else?",
         type: "list",
@@ -81,13 +77,10 @@ function addEmployee() {
             console.log("----")
         }
     });
-
 }
-
+// This function will continue the cycle of adding additional employees.
 function newMember(next, detail){
-    console.log(detail)
-  inquirer
-    .prompt([
+  inquirer.prompt([
         {
             message: `What is the ${next}'s name?`,
             type: "input",
@@ -110,12 +103,18 @@ function newMember(next, detail){
         },
     ])
     .then(function({name, id, email, detail}) {
-        if 
-        const newEmployee = new `${next}`(name, id, email, detail)
-        employeeList.push(newEmployee);
-        console.log(employeeList);
-        addEmployee();
+        if (next === "Engineer"){
+            const newEmployee = new Engineer(name, id, email, detail)
+            employeeList.push(newEmployee);
+            console.log(employeeList);
+            addEmployee();
+        } else if (next === "Intern"){
+            const newEmployee = new Intern(name, id, email, detail)
+            employeeList.push(newEmployee);
+            console.log(employeeList);
+            addEmployee();
+        }
     });
-}   
+}
 
 begin();
