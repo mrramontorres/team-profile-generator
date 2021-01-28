@@ -4,12 +4,29 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Employee = require('./lib/Employee');
-const { connected } = require('process');
 
 let employeeList = [];
 
-function appMenu() {
+function begin() {
+  inquirer
+    .prompt([
+        {
+            message: "Are you the manager of this team?",
+            type: "confirm",
+            name: "start",
+        }
+    ])
+    .then(val => {
+        console.log(val)
+        if(val.start) {
+            appMenu()
+        } else {
+            console.log("Only managers are able to create team profiles.");
+        }
+    });
+}
 
+function appMenu() {
     inquirer.prompt([
     {
     type: "input",
@@ -25,14 +42,13 @@ function appMenu() {
     type: "input",
     name: "email",
     message: "What's your email?",
-    }
+    },
     /*{
     type: "confirm",
     name: "choice",
     message: "Would you like to add more employees?"
     }*/
     ])
-
     .then((data) => {
         console.log(data.name);
         console.log(data.id);
@@ -40,18 +56,8 @@ function appMenu() {
         console.log(data);
         employeeList.push(data);
         console.log(employeeList);
-
     });
-
-    /*
-    .then((val) => {
-        if (val.choice) {
-            console.log("Need to add more....");
-        } else {
-            console.log("Done.");
-        }
-    })
-    */
 }
 
-appMenu();
+begin();
+
