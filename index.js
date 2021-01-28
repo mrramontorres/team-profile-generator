@@ -23,18 +23,21 @@ function appMenu() {
     type: "input",
     name: "email",
     message: "What's your email?",
-    },
-    {
+    }
+    /*{
     type: "confirm",
     name: "choice",
     message: "Would you like to add more employees?"
-    }
+    }*/
     ])
 
     .then((data) => {
-        console.log(data);
-    })
-    
+        console.log(data.name);
+        console.log(data.id);
+        console.log(data.email);
+
+    });
+
     /*
     .then((val) => {
         if (val.choice) {
