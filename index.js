@@ -18,7 +18,8 @@ function begin() {
     ])
     .then(val => {
         if(val.start) {
-            appMenu()
+            appMenu();
+            pageStart();
         } else {
             console.log("\n Only managers can create team profiles.\n Please find the manager of this team.\n Goodbye. \n ----------- \n");
         }
@@ -51,8 +52,8 @@ function appMenu() {
     .then(function({name, id, email,officeNumber}) {
         const employeeManager = new Manager(name, id, email, officeNumber)
         employeeList.push(employeeManager);
+        managerHTML(employeeManager);
         addEmployee();
-        pageStart();
     });
 }
 
@@ -76,7 +77,6 @@ function addEmployee() {
             const detail = "school"
             newMember(next, detail)
         } else {
-            generatePage(employeeList);
             console.log("----")
         }
     });
@@ -109,10 +109,12 @@ function newMember(next, detail){
         if (next === "Engineer"){
             const newEmployee = new Engineer(name, id, email, detail)
             employeeList.push(newEmployee);
+            memberHTML(newEmployee);
             addEmployee();
         } else if (next === "Intern"){
             const newEmployee = new Intern(name, id, email, detail)
             employeeList.push(newEmployee);
+            memberHTML(newEmployee);
             addEmployee();
         }
     });
@@ -155,13 +157,55 @@ function pageStart() {
     })
 };
 
+function memberHTML(newEmployee) {
+    const data =
+    `
+        <div class="card employee-card">
+        <div class="card-header">
+            <h2 class="card-title">${newEmployee.getName()}</h2>
+            <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${newEmployee.getRole()}</h3>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">ID: ${newEmployee.getId()}</li>
+                <li class="list-group-item">Email: <a href="mailto:${newEmployee.getEmail()}}">${newEmployee.getEmail()}</a></li>
+                <li class="list-group-item">Office number: ${employeeManager.getOfficeNumber()}}</li>
+            </ul>
+        </div>
+    </div>
+    `;
+    fs.appendFile("./dist/sampleTeam.html", data, function(err) {
+        if (err) {
+            console.log(err);
+        }
+    })
+};
 
 
-function generatePage(employeeList) {
-    console.log(employeeList);
-    console.log(employeeList.getRole());
+function managerHTML(employeeManager) {
+    const data =
+    `
+        <div class="card employee-card">
+        <div class="card-header">
+            <h2 class="card-title">${employeeManager.getName()}</h2>
+            <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${employeeManager.getRole()}</h3>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">ID: ${employeeManager.getId()}</li>
+                <li class="list-group-item">Email: <a href="mailto:${employeeManager.getEmail()}}">${employeeManager.getEmail()}</a></li>
+                <li class="list-group-item">Office number: ${employeeManager.getOfficeNumber()}}</li>
+            </ul>
+        </div>
+    </div>
+    `;
+    fs.appendFile("./dist/sampleTeam.html", data, function(err) {
+        if (err) {
+            console.log(err);
+        }
+    })
+};
 
-}
 
 
 begin();
