@@ -17,11 +17,10 @@ function begin() {
         }
     ])
     .then(val => {
-        console.log(val)
         if(val.start) {
             appMenu()
         } else {
-            console.log("Only managers are able to create team profiles.");
+            console.log("\n Only managers are able to create team profiles.\n Please find the manager of this team.\n Goodbye. \n ----------- \n");
         }
     });
 }
