@@ -7,6 +7,7 @@ const Employee = require('./lib/Employee');
 
 let employeeList = [];
 
+// This function verifies that a manager is creating the profiles.
 function begin() {
   inquirer
     .prompt([
@@ -24,7 +25,7 @@ function begin() {
         }
     });
 }
-
+// This function fufills the manager questions and creates a manager object.
 function appMenu() {
   inquirer
     .prompt([
@@ -48,11 +49,6 @@ function appMenu() {
             type: "input",
             name: "officeNumber",
         }
-        /*{
-        type: "confirm",
-        name: "choice",
-        message: "Would you like to add more employees?"
-        }*/
     ])
     .then(function({name, id, email,officeNumber}) {
         const employeeManager = new Manager(name, id, email, officeNumber)
@@ -62,17 +58,21 @@ function appMenu() {
     });
 
 }
-
+// This function asks what the user wants to do next.
 function addEmployee() {
   inquirer
     .prompt([
         {
-        message: "What would you like to do next?",
+        message: "Would you like to add anyone else?",
         type: "list",
-        choices: ["Add an engineer.", "Add an intern.", "Generate team profiles."],
+        choices: ["Engineer", "Intern", "No, I'm done."],
         name: "nextStep",
         }
     ])
+    .then(function(nextStep) {
+        var obj = nextStep
+        console.log(obj[Object.keys(obj)[0]]);
+    });
 
 }
 
