@@ -1,19 +1,32 @@
 const fs = require('fs');
-const { get } = require('http');
 const inquirer = require('inquirer');
-const { getEnabledCategories } = require('trace_events');
-const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 
-async function init() {
-    try{
-        const employee = await new Employee()
-        console.log(Employee);
-        console.log(employee);
-    } catch (error) {
-        console.log(error)
-    }
+function appMenu() {
+    const employee = inquirer
+    .prompt([
+    {
+        type: "input",
+        name: "name",
+        message: "What's your name?",
+    },
+    {
+        type: "input",
+        name: "id",
+        message: "What's your employee id?",
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What's your email?",
+    },
+    ])
+    .then((data) => {
+        console.log(data)
+    });
 }
+
+appMenu();
