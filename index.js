@@ -69,7 +69,8 @@ function addEmployee() {
         {
         message: "What would you like to do next?",
         type: "list",
-        choice: ["Add an engineer.", "Add an intern.", "Generate team profiles."]
+        choices: ["Add an engineer.", "Add an intern.", "Generate team profiles."],
+        name: "nextStep",
         }
     ])
 
