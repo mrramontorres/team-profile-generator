@@ -3,7 +3,6 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const fs = require('fs');
-const generatePage = requires('./src/generatePage')
 
 // This creates the array that will contain the employee objects.
 let employeeList = [];
@@ -76,7 +75,6 @@ function addEmployee() {
             const detail = "school"
             newMember(next, detail)
         } else {
-            console.log(employeeList);
             generatePage(employeeList);
             console.log("----")
         }
@@ -118,4 +116,9 @@ function newMember(next, detail){
         }
     });
 }
+
+function generatePage(employeeList){
+    console.log(employeeList);
+}
+
 begin();
