@@ -4,6 +4,7 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Employee = require('./lib/Employee');
+const { connected } = require('process');
 
 let employeeList = [];
 
@@ -71,9 +72,38 @@ function addEmployee() {
     ])
     .then(function(nextStep) {
         var obj = nextStep
-        console.log(obj[Object.keys(obj)[0]]);
+        const next = obj[Object.keys(obj)[0]];
+        if (next === "Engineer" ){
+            console.log(`${next}`)
+            newMember(next)
+        } else if (next === "Intern"){
+            console.log(`${next}`)
+        } else {
+            console.log("----")
+        }
     });
 
+}
+function newMember(next){
+    console.log(next)
+  inquirer
+    .prompt([
+        {
+            message: `What is the ${next}'s name?`,
+            type: "input",
+            name: "name",
+        },
+        {
+            message: `What is the ${next}'s ID?`,
+            type: "input",
+            name: "id",
+        },
+        {
+            message: `What is the ${next}'s work email?`,
+            type: "input",
+            name: "email",
+        },
+    ])
 }
 
 begin();
