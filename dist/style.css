@@ -4,8 +4,8 @@
     background-color: #5cc0ff;
     color: rgb(255, 255, 255);
     border-radius: 10px;
-    border-bottom: 10px solid black;
-    border-top: 10px solid black;
+    border-bottom: 10px solid rgb(13, 0, 255);
+    border-top: 10px solid rgb(255, 0, 162);
 }
 
 body {
@@ -13,17 +13,14 @@ body {
     line-height: 1;
 }
 
-
 .card {
-    background-color: hsl(54, 93%, 70%);
+    background-color: hsl(166, 67%, 66%);
     border-radius: 5px;
     border-width: 1px;
-    box-shadow: rgba(255, 0, 0, 0.5) 0px 2px 8px 0px;
-    color: hsl(238, 100%, 25%);
-    font-size: 18px;
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 30px 40px;
+    box-shadow: rgba(0, 179, 255, 0.5) 0px 2px 8px 0px;
+    color: hsl(0, 0%, 0%);
+    font-size: 16px;
+    margin: 10px auto;
+    max-width: 300px;
+    padding: 5px 5px;
 }
-
-
