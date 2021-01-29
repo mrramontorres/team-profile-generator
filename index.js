@@ -108,7 +108,7 @@ function newMember(next, detail){
         if (next === "Engineer"){
             const newEmployee = new Engineer(name, id, email, detail)
             employeeList.push(newEmployee);
-            console.log(newEmployee.getName());
+            console.log(Object.keys(newEmployee)[3]);
             engineerHTML(newEmployee);
             addEmployee();
         } else if (next === "Intern"){
@@ -156,12 +156,13 @@ function pageStart() {
 };
 function engineerHTML(newEmployee) {
   return new Promise(function(resolve, reject) {
-   const newName = newEmployee.getName();
+
+
    const data =
     `
         <div class="card employee-card">
         <div class="card-header">
-            <h2 class="card-title">${newName}</h2>
+            <h2 class="card-title">${newEmployee.getName()}</h2>
             <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${newEmployee.getRole()}</h3>
         </div>
         <div class="card-body">
