@@ -108,7 +108,6 @@ function newMember(next, detail){
         if (next === "Engineer"){
             const newEmployee = new Engineer(name, id, email, detail)
             employeeList.push(newEmployee);
-            //console.log(Object.values(newEmployee)[3]);
             engineerHTML(newEmployee);
             addEmployee();
         } else if (next === "Intern"){
@@ -155,11 +154,9 @@ function pageStart() {
     })
 };
 function engineerHTML(newEmployee) {
-    //console.log(Object.values(newEmployee)[3]);
   return new Promise(function(resolve, reject) {
-
    const data =
-    `
+        `
         <div class="card employee-card">
         <div class="card-header">
             <h2 class="card-title">${newEmployee.getName()}</h2>
@@ -181,6 +178,31 @@ function engineerHTML(newEmployee) {
         return resolve();
     })
 })}; 
+function internHTML(newEmployee) {
+  return new Promise(function(resolve, reject) {
+     const data =
+      `
+        <div class="card employee-card">
+        <div class="card-header">
+            <h2 class="card-title">${intern.getName()}</h2>
+            <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">ID: {{ id }}</li>
+                <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+                <li class="list-group-item">School: ${intern.getSchool()}</li>
+            </ul>
+        </div>
+    </div>
+    `;
+      fs.appendFile("./dist/sampleTeam.html", data, function(err) {
+          if (err) {
+              return reject(err);
+          }
+          return resolve();
+      })
+  })}; 
 function managerHTML(employeeManager) {
     const data =
     `
