@@ -169,7 +169,7 @@ function engineerHTML(newEmployee) {
             <ul class="list-group">
                 <li class="list-group-item">ID: ${newEmployee.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${newEmployee.getEmail()}}">${newEmployee.getEmail()}</a></li>
-                ${newEmployee.getGitHub()}
+                <li class="list-group-item">GitHub: <a href="https://github.com/${newEmployee.getGitHub()}" target="_blank" rel="noopener noreferrer">${newEmployee.getGitHub()}</a></li>
             </ul>
         </div>
     </div>
