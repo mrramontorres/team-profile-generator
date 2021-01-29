@@ -56,7 +56,6 @@ function appMenu() {
         addEmployee();
     });
 }
-
 // This function asks what the user wants to do next.
 function addEmployee() {
   inquirer.prompt([
@@ -109,18 +108,17 @@ function newMember(next, detail){
         if (next === "Engineer"){
             const newEmployee = new Engineer(name, id, email, detail)
             employeeList.push(newEmployee);
-            memberHTML(newEmployee);
+            console.log(newEmployee.getName());
+            engineerHTML(newEmployee);
             addEmployee();
         } else if (next === "Intern"){
             const newEmployee = new Intern(name, id, email, detail)
             employeeList.push(newEmployee);
-            memberHTML(newEmployee);
+            internHTML(newEmployee);
             addEmployee();
         }
     });
 }
-
-
 function pageStart() {
     const html =
     `
@@ -156,11 +154,10 @@ function pageStart() {
         }
     })
 };
-
-function memberHTML(newEmployee) {
-    if (newEmployee instanceof Engineer) {
-        console.log("engineer check");
-/*    const data =
+function engineerHTML(newEmployee) {
+    console.log(newEmployee);
+    console.log(newEmployee.getName());
+   const data =
     `
         <div class="card employee-card">
         <div class="card-header">
@@ -171,44 +168,18 @@ function memberHTML(newEmployee) {
             <ul class="list-group">
                 <li class="list-group-item">ID: ${newEmployee.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${newEmployee.getEmail()}}">${newEmployee.getEmail()}</a></li>
-                ` 
                 //<li class="list-group-item">GitHub: <a href="https://github.com/${newEmployee.getGithub()}" target="_blank" rel="noopener noreferrer">${newEmployee.getGithub()}</a></li>
-                `
             </ul>
         </div>
     </div>
     `;
-*/
-    } else if (newEmployee instanceof Intern) {
-        console.log("intern check");
-/*        const data =
-    `
-        <div class="card employee-card">
-        <div class="card-header">
-            <h2 class="card-title">${newEmployee.getName()}</h2>
-            <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${newEmployee.getRole()}</h3>
-        </div>
-        <div class="card-body">
-            <ul class="list-group">
-                <li class="list-group-item">ID: ${newEmployee.getId()}</li>
-                <li class="list-group-item">Email: <a href="mailto:${newEmployee.getEmail()}}">${newEmployee.getEmail()}</a></li>
-                `
-                //<li class="list-group-item">School: ${newEmployee.getSchool()}</li>
-                `
-            </ul>
-        </div>
-    </div>
-    `;
-*/
-    }
-/*    fs.appendFile("./dist/sampleTeam.html", data, function(err) {
+    fs.appendFile("./dist/sampleTeam.html", data, function(err) {
         if (err) {
-            console.log(err);
+            console.log(err); ``
         }
     })
-*/
-};
 
+};
 function managerHTML(employeeManager) {
     const data =
     `
@@ -232,7 +203,4 @@ function managerHTML(employeeManager) {
         }
     })
 };
-
-
-
 begin();
