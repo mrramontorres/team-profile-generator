@@ -49,7 +49,7 @@ function appMenu() {
             name: "officeNumber",
         }
     ])
-    .then(function({name, id, email,officeNumber}) {
+    .then(function({name, id, email, officeNumber}) {
         const employeeManager = new Manager(name, id, email, officeNumber)
         employeeList.push(employeeManager);
         managerHTML(employeeManager);
@@ -158,7 +158,9 @@ function pageStart() {
 };
 
 function memberHTML(newEmployee) {
-    const data =
+    if (newEmployee instanceof Engineer) {
+        console.log("engineer check");
+/*    const data =
     `
         <div class="card employee-card">
         <div class="card-header">
@@ -169,18 +171,43 @@ function memberHTML(newEmployee) {
             <ul class="list-group">
                 <li class="list-group-item">ID: ${newEmployee.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${newEmployee.getEmail()}}">${newEmployee.getEmail()}</a></li>
-                <li class="list-group-item">Office number: ${employeeManager.getOfficeNumber()}}</li>
+                ` 
+                //<li class="list-group-item">GitHub: <a href="https://github.com/${newEmployee.getGithub()}" target="_blank" rel="noopener noreferrer">${newEmployee.getGithub()}</a></li>
+                `
             </ul>
         </div>
     </div>
     `;
-    fs.appendFile("./dist/sampleTeam.html", data, function(err) {
+*/
+    } else if (newEmployee instanceof Intern) {
+        console.log("intern check");
+/*        const data =
+    `
+        <div class="card employee-card">
+        <div class="card-header">
+            <h2 class="card-title">${newEmployee.getName()}</h2>
+            <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${newEmployee.getRole()}</h3>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">ID: ${newEmployee.getId()}</li>
+                <li class="list-group-item">Email: <a href="mailto:${newEmployee.getEmail()}}">${newEmployee.getEmail()}</a></li>
+                `
+                //<li class="list-group-item">School: ${newEmployee.getSchool()}</li>
+                `
+            </ul>
+        </div>
+    </div>
+    `;
+*/
+    }
+/*    fs.appendFile("./dist/sampleTeam.html", data, function(err) {
         if (err) {
             console.log(err);
         }
     })
+*/
 };
-
 
 function managerHTML(employeeManager) {
     const data =
@@ -194,7 +221,7 @@ function managerHTML(employeeManager) {
             <ul class="list-group">
                 <li class="list-group-item">ID: ${employeeManager.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${employeeManager.getEmail()}}">${employeeManager.getEmail()}</a></li>
-                <li class="list-group-item">Office number: ${employeeManager.getOfficeNumber()}}</li>
+                <li class="list-group-item">Office number: ${employeeManager.getOfficeNumber()}</li>
             </ul>
         </div>
     </div>
