@@ -108,7 +108,7 @@ function newMember(next, detail){
         if (next === "Engineer"){
             const newEmployee = new Engineer(name, id, email, detail)
             employeeList.push(newEmployee);
-            console.log(Object.keys(newEmployee)[3]);
+            //console.log(Object.values(newEmployee)[3]);
             engineerHTML(newEmployee);
             addEmployee();
         } else if (next === "Intern"){
@@ -155,8 +155,8 @@ function pageStart() {
     })
 };
 function engineerHTML(newEmployee) {
+    //console.log(Object.values(newEmployee)[3]);
   return new Promise(function(resolve, reject) {
-
 
    const data =
     `
@@ -169,7 +169,7 @@ function engineerHTML(newEmployee) {
             <ul class="list-group">
                 <li class="list-group-item">ID: ${newEmployee.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${newEmployee.getEmail()}}">${newEmployee.getEmail()}</a></li>
-
+                ${newEmployee.getGitHub()}
             </ul>
         </div>
     </div>
