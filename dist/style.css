@@ -5,6 +5,7 @@
     color: rgb(255, 255, 255);
     border-radius: 10px;
     border-bottom: 10px solid black;
+    border-top: 10px solid black;
 }
 
 body {
@@ -12,14 +13,17 @@ body {
     line-height: 1;
 }
 
+
 .card {
-    background-color: hsl(77, 100%, 93%);
+    background-color: hsl(54, 93%, 70%);
     border-radius: 5px;
     border-width: 1px;
-    box-shadow: rgba(0, 0, 0, .5) 0px 2px 8px 0px;
-    color: hsl(285, 100%, 29%);
+    box-shadow: rgba(255, 0, 0, 0.5) 0px 2px 8px 0px;
+    color: hsl(238, 100%, 25%);
     font-size: 18px;
     margin: 0 auto;
     max-width: 800px;
     padding: 30px 40px;
 }
+
+
