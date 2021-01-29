@@ -1,13 +1,15 @@
-const axios = require("axios");
-const Employee = requires("../lib/Employee");
 
-jest.mock("axios");
+const Employee = require("../lib/Employee");
 
 describe("Employee", () => {
-    describe("Initialize", () => {
-        it("Should run start object", () => {
-            const test = new Employee();
-            expect(typeof(test)).toBe("object");
-        });
+    it("Should start object", () => {
+        const obj = new Employee();
+        expect(typeof(obj)).toBe("object");
+    });
+
+    it("Sets name using constructor function", () => {
+        const name = "testName";
+        const obj = new Employee(name);
+        expect(typeof(obj.name).toBe(name));
     });
 });

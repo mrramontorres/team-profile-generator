@@ -1,1 +1,1 @@
-const Manager = requires("../lib/Manager");
+const Manager = require("../lib/Manager");
