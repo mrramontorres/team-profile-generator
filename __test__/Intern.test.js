@@ -1,0 +1,1 @@
+const Intern = requires("../lib/Intern");

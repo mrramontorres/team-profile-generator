@@ -1,0 +1,1 @@
+const Manager = requires("../lib/Manager");
