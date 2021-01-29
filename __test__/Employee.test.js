@@ -10,6 +10,12 @@ describe("Employee", () => {
     it("Sets name using constructor function", () => {
         const name = "testName";
         const obj = new Employee(name);
+        expect(typeof(obj.name).toBe("testName"));
+    });
+
+    it("Sets name using constructor function", () => {
+        const testVal = "testName";
+        const obj = new Employee(name);
         expect(typeof(obj.name).toBe(name));
     });
 });
