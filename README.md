@@ -7,7 +7,7 @@ A  Node.js based command-line application that takes in information about employ
 Once in the vscode environment run node index.js to being populating information about your team.
 
 ## Usage
-
+As a manager you can generate a webpage that displays your team's basic information. There can only be one manager per team while there can be multiple engineers and interns for each team page. A command-line prompt will request basic information about all team members such as name, email, and emplyoee ID; however, engineers will be provided the option of adding a gitHub account while intern's will be provided the option of adding a school name.
 
 ## Video Walkthrough - Sample User Journey
 https://drive.google.com/drive/folders/1SEUXHywEwC5JOhgOqDxoBIAQt36-ZXaW?usp=sharing
