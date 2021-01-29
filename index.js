@@ -76,7 +76,8 @@ function addEmployee() {
             const detail = "school"
             newMember(next, detail)
         } else {
-            console.log("----")
+            pageEnd();
+            console.log("----Team Page Generated!----")
         }
     });
 }
@@ -169,7 +170,7 @@ function engineerHTML(newEmployee) {
                 <li class="list-group-item">GitHub: <a href="https://github.com/${newEmployee.getGitHub()}" target="_blank" rel="noopener noreferrer">${newEmployee.getGitHub()}</a></li>
             </ul>
         </div>
-    </div>
+        </div>
     `; 
     fs.appendFile("./dist/sampleTeam.html", data, function(err) {
         if (err) {
@@ -189,12 +190,12 @@ function internHTML(newEmployee) {
         </div>
         <div class="card-body">
             <ul class="list-group">
-                <li class="list-group-item">ID: {{ id }}</li>
+                <li class="list-group-item">ID: ${newEmployee.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${newEmployee.getEmail()}">${newEmployee.getEmail()}</a></li>
                 <li class="list-group-item">School: ${newEmployee.getSchool()}</li>
             </ul>
         </div>
-    </div>
+        </div>
     `;
       fs.appendFile("./dist/sampleTeam.html", data, function(err) {
           if (err) {
@@ -218,7 +219,7 @@ function managerHTML(employeeManager) {
                 <li class="list-group-item">Office number: ${employeeManager.getOfficeNumber()}</li>
             </ul>
         </div>
-    </div>
+        </div>
     `;
     fs.appendFile("./dist/sampleTeam.html", data, function(err) {
         if (err) {
@@ -226,4 +227,18 @@ function managerHTML(employeeManager) {
         }
     })
 };
+function pageEnd() {
+    const html =
+    `
+
+</body>
+</html>
+    `
+    fs.appendFile("./dist/sampleTeam.html", html, function(err) {
+        if (err) {
+            console.log(err);
+        }
+    })
+};
+
 begin();

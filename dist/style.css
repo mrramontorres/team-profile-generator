@@ -1,0 +1,25 @@
+
+.jumbotron {
+    text-align: center;
+    background-color: #5cc0ff;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border-bottom: 10px solid black;
+}
+
+body {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.card {
+    background-color: hsl(77, 100%, 93%);
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, .5) 0px 2px 8px 0px;
+    color: hsl(285, 100%, 29%);
+    font-size: 18px;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 30px 40px;
+}
