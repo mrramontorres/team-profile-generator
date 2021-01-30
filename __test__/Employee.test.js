@@ -1,21 +1,21 @@
-
 const Employee = require("../lib/Employee");
 
 describe("Employee", () => {
     it("Should start object", () => {
-        const obj = new Employee();
-        expect(typeof(obj)).toBe("object");
+        const thing = new Employee();
+        const obj = "object";
+        expect(typeof(thing)).toBe(obj);
     });
 
     it("Sets name using constructor function", () => {
-        const name = "testName";
-        const obj = new Employee(name);
-        expect(typeof(obj.name).toBe("testName"));
+        const name = "myName"
+        const test = new Employee(name);
+        expect(test.name).toBe(name);
     });
 
-    it("Sets name using constructor function", () => {
-        const testVal = "testName";
-        const obj = new Employee(name);
-        expect(typeof(obj.name).toBe(name));
+    it("Sets id using constructor function", () => {
+        const testID = 1234;
+        const test = new Employee("myName",testID);
+        expect(test.id).toBe(testID);
     });
 });
