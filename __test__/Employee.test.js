@@ -18,4 +18,11 @@ describe("Employee", () => {
         const test = new Employee("myName",testID);
         expect(test.id).toBe(testID);
     });
+
+    it("Sets email using constructor function", () => {
+        const testEmail = "my@email.com";
+        const test = new Employee("myName",1234,testEmail);
+        expect(test.email).toBe(testEmail);
+    });
+
 });

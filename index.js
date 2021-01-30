@@ -67,14 +67,15 @@ function addEmployee() {
         }
     ])
     .then(function(nextStep) {
-        var obj = nextStep
+        var obj = nextStep;
         const next = obj[Object.keys(obj)[0]];
+        console.log(next);
         if (next === "Engineer"){
             const detail = "gitHub account"
-            newMember(next, detail)
+            newMember(next, detail);
         } else if (next === "Intern"){
-            const detail = "school"
-            newMember(next, detail)
+            const detail = "school";
+            newMember(next, detail);
         } else {
             pageEnd();
             console.log("\n----Team Page Generated!----")
