@@ -30,4 +30,10 @@ describe("Employee", () => {
         expect(test.detail).toBe(undefined);
     });
 
+    it("Sets detail using constructor function", () => {
+        const testDetail = "";
+        const test = new Engineer("myName",1234,"my@email.com",testDetail);
+        expect(test.detail).toBe(undefined);
+    });
+
 });

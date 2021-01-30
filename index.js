@@ -69,13 +69,15 @@ function addEmployee() {
     .then(function(nextStep) {
         var obj = nextStep;
         const next = obj[Object.keys(obj)[0]];
-        console.log(next);
         if (next === "Engineer"){
             const detail = "gitHub account"
+//console.log("line 74 " + detail);
             newMember(next, detail);
+//console.log("line 76 " + detail);
         } else if (next === "Intern"){
             const detail = "school";
             newMember(next, detail);
+//console.log("line 80 " + detail);
         } else {
             pageEnd();
             console.log("\n----Team Page Generated!----")
@@ -84,6 +86,7 @@ function addEmployee() {
 }
 // This function will continue the cycle of adding additional employees.
 function newMember(next, detail){
+//console.log("line 89 " + detail);
   inquirer.prompt([
         {
             message: `What is the ${next}'s name?`,
@@ -108,6 +111,7 @@ function newMember(next, detail){
     ])
     .then(function({name, id, email, detail}) {
         if (next === "Engineer"){
+//console.log("line 114 " + detail);
             const newEmployee = new Engineer(name, id, email, detail)
             employeeList.push(newEmployee);
             engineerHTML(newEmployee);
